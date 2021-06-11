@@ -20,6 +20,7 @@ export class Worker extends NodeJS.EventEmitter {
     disconnect();
     setAttributes(attributes: any): Promise<Worker>;
     updateToken(newToken: string);
+    createTask(to: string, from: string, workflowSid: string, taskQueueSid: string, options?: TaskOptions): Promise<String>;
 }
 
 export interface Activity {
@@ -154,4 +155,10 @@ export interface RedirectOptions {
 
 export interface RejectOptions {
     activitySid: string;
+}
+
+export interface TaskOptions {
+    attributes?: Object;
+    taskChannelUniqueName?: string;
+    taskChannelSid?: string;
 }
